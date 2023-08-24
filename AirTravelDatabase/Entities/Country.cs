@@ -9,12 +9,13 @@ namespace AirTravelDatabase.Entities
 {
     public class Country
     {
-        [Key]
+       // [Key]
         public int Id { get; set; }
 
-        [MaxLength(56)]
+      //  [MaxLength(56)]
         public string Name { get; set; }
 
         public ICollection<City> Cities { get; set; } = new HashSet<City>();
+        public ICollection<AirPlane> AirPlanes { get; set; } = new HashSet<AirPlane>();
     }
 }
