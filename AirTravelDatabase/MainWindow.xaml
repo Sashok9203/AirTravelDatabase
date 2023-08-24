@@ -7,53 +7,51 @@
         d:DataContext="{d:DesignInstance Type = vms:AirTraveDBModel}"
         xmlns:local="clr-namespace:AirTravelDatabase"
         mc:Ignorable="d"
-        Title="Air Travel" Height="450" Width="800" Background= "AliceBlue">
+        Title="Air Travel" Height="450" Width="800" Background= "#FFCAD7E2">
 
     <Window.DataContext>
         <vms:AirTraveDBModel/>
     </Window.DataContext>
-    <Grid Margin="10">
 
+    <Border  Margin="10" CornerRadius="3,3,0,0" >
+        <Border.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF688CB5" Offset="0.084"/>
+                <GradientStop Color="#FF688CB5" Offset="0.919"/>
+                <GradientStop Color="#FECCD8E6" Offset="0.5"/>
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Border Padding="5" CornerRadius="3,3,0,0" >
-            <Border.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF688CB5" Offset="0.076"/>
-                    <GradientStop Color="#FFD6E7FB" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.Background>
-            <StackPanel Orientation="Horizontal">
-                <DatePicker  Width="150"  Margin="5,0,10,0" VerticalAlignment="Center"/>
-                <ComboBox  Margin="0,0,10,0" Width="150" Height="25"/>
-                <Button VerticalAlignment="Center" Height="25" Width="70" HorizontalAlignment="Left" Grid.Column="2" Content="Find Flight"/>
-            </StackPanel>
-        </Border>
-        <Border Grid.Row="1" Padding="5" CornerRadius="0,0,3,3">
-            <DataGrid AutoGenerateColumns="False" >
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Flight Number" Width="*" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="Country" Width="*" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="Plane Model" Width="*" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="Plane Type" Width="*" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="Passengers" Width="*" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="Arrival" Width="*" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="Departure" Width="*" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="From" Width="*" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="Destination" Width="*" IsReadOnly="True"/>
+        
+        <StackPanel Orientation="Horizontal">
+             <StackPanel Orientation="Horizontal">
+                  <TextBlock  Margin="5,0,10,0" Text="Arival Date"  VerticalAlignment="Center" FontWeight="DemiBold"/>
+                  <DatePicker  Width="150"  Margin="5,0,10,0" VerticalAlignment="Center" SelectedDate="{Binding SelectedDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+             </StackPanel>
+             <StackPanel Orientation="Horizontal">
+                  <TextBlock  Margin="5,0,10,0" Text="From"  VerticalAlignment="Center" FontWeight="DemiBold"/>
+                  <ComboBox  Margin="0,0,10,0" Width="150" Height="25" SelectedItem="{Binding From,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+             </StackPanel>
+                  <Button VerticalAlignment="Center" Height="25" Width="70" HorizontalAlignment="Left" Grid.Column="2" Content="Find Flight" Command="{Binding Find,Mode=OneTime}"/>
+        </StackPanel>
+        <DataGrid AutoGenerateColumns="False" Grid.Row="1" ItemsSource="{Binding Flights}">
+             <DataGrid.Columns>
+                 <DataGridTextColumn Header="Flight" Width="*" IsReadOnly="True" Binding="{Binding Number}"/>
+                 <DataGridTextColumn Header="Country" Width="*" IsReadOnly="True" Binding="{Binding Plane.Country.Name}"/>
+                 <DataGridTextColumn Header="Plane Model" Width="*" IsReadOnly="True" Binding="{Binding Plane.Model}"/>
+                    <DataGridTextColumn Header="Plane Type" Width="*" IsReadOnly="True" Binding="{Binding Plane.PlaneType.Type}"/>
+                    <DataGridTextColumn Header="Passengers" Width="*" IsReadOnly="True" Binding="{Binding Plane.PassengersCount}"/>
+                    <DataGridTextColumn Header="Arrival" Width="*" IsReadOnly="True" Binding="{Binding Arrival}"/>
+                 <DataGridTextColumn Header="Departure" Width="*" IsReadOnly="True" Binding="{Binding Departure}"/>
+                 <DataGridTextColumn Header="From" Width="*" IsReadOnly="True" Binding="{Binding ArrivalCity.Name}"/>
+                 <DataGridTextColumn Header="Destination" Width="*" IsReadOnly="True" Binding="{Binding DepartureCity.Name}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Border.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFD6E7FB" Offset="0.076"/>
-                    <GradientStop  Color="#FF688CB5" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.Background>
-        </Border>
-
-
-
-    </Grid>
+        </Grid>
+    </Border>
+    
 </Window>

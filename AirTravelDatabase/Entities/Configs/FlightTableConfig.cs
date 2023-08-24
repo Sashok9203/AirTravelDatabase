@@ -16,7 +16,7 @@ namespace AirTravelDatabase.Entities.Configs
             builder.Property(x => x.Model).HasMaxLength(56);
             builder.HasOne(x => x.ArrivalCity).WithMany(x => x.ArivalFlights).HasForeignKey(x => x.ArrivalCityId);
             builder.HasOne(x => x.DepartureCity).WithMany(x => x.DepartureFlights).HasForeignKey(x => x.DepartureCityId);
-            builder.HasOne(x => x.AirPlane).WithMany(x => x.Flights).HasForeignKey(x => x.AirPlaneId);
+            builder.HasOne(x => x.Plane).WithMany(x => x.Flights).HasForeignKey(x => x.PlaneId);
         }
     }
 }

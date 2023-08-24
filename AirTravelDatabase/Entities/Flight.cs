@@ -23,8 +23,8 @@ namespace AirTravelDatabase.Entities
         public DateTime Departure { get; set; }
 
         // [ForeignKey("AirPlane")]
-        public int AirPlaneId { get; set; }
-        public Plane AirPlane { get; set; }
+        public int PlaneId { get; set; }
+        public Plane Plane { get; set; }
 
         public int? ArrivalCityId { get; set; }
         public City? ArrivalCity { get; set; }
