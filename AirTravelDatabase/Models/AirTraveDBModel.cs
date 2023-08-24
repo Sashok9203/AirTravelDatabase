@@ -41,6 +41,7 @@ namespace AirTravelDatabase.Models
         public RelayCommand Find { get; set; }
 
         public IEnumerable<Flight>? Flights => flight;
+        public IEnumerable<City>?   Cities  => dBContext.Cities.ToArray();
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
