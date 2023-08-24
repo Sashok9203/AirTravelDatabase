@@ -15,7 +15,7 @@ namespace AirTravelDatabase.Data
     {
         public AirTraveDBContext()
         {
-            Database.EnsureDeleted();
+           // Database.EnsureDeleted();
             if (Database.EnsureCreated())
             {
                 foreach (var item in Flights)

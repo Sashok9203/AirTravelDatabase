@@ -17,6 +17,10 @@ namespace AirTravelDatabase.Models
 
         private Flight[]? flight;
 
+        private Flight? selectedFlight;
+
+        private Client[]? clients;
+
         private bool disposedValue;
 
         private void find()
@@ -24,7 +28,8 @@ namespace AirTravelDatabase.Models
             flight = dBContext.Flights.Where(x => x.ArrivalCityId == From.Id && x.Arrival.Date == SelectedDate.Value.Date)
                                     .Include(x => x.Plane).ThenInclude(x => x.PlaneType)
                                     .Include(x => x.Plane).ThenInclude(x => x.Country)
-                                    .Include(x => x.ArrivalCity).Include(x => x.DepartureCity).ToArray();
+                                    .Include(x => x.ArrivalCity).Include(x => x.DepartureCity)
+                                    .Include(x => x.Clients).ThenInclude(x => x.Gender).ToArray();
             OnPropertyChanged("Flights");
             From = null;
         }
@@ -33,6 +38,17 @@ namespace AirTravelDatabase.Models
         {
             dBContext = new();
             Find = new((o) => find(), (o) => SelectedDate != null && city != null);
+        }
+
+        public Flight? SelectedFlight
+        {
+            get => selectedFlight;
+            set
+            {
+                selectedFlight = value;
+                clients = selectedFlight?.Clients.ToArray();
+                OnPropertyChanged("Clients");
+            }
         }
 
         public DateTime? SelectedDate { get; set; }
@@ -52,7 +68,9 @@ namespace AirTravelDatabase.Models
 
         public IEnumerable<Flight>? Flights => flight;
 
-        public IEnumerable<City>?   Cities  => dBContext.Cities.ToArray();
+        public IEnumerable<City>?  Cities  => dBContext.Cities.ToArray();
+
+        public IEnumerable<Client>? Clients => clients;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 

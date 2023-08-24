@@ -13,7 +13,7 @@
         <vms:AirTraveDBModel/>
     </Window.DataContext>
 
-    <Border  Margin="10" CornerRadius="3,3,0,0" >
+    <Border  Margin="10" CornerRadius="5" >
         <Border.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="#FF688CB5" Offset="0.084"/>
@@ -25,7 +25,9 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
             <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
         
         <StackPanel Orientation="Horizontal">
              <StackPanel Orientation="Horizontal">
@@ -38,17 +40,26 @@
              </StackPanel>
                   <Button VerticalAlignment="Center" Height="25" Width="70" HorizontalAlignment="Left" Grid.Column="2" Content="Find Flight" Command="{Binding Find,Mode=OneTime}"/>
         </StackPanel>
-        <DataGrid AutoGenerateColumns="False" Grid.Row="1" ItemsSource="{Binding Flights}">
+        <DataGrid   AutoGenerateColumns="False" Grid.Row="1" ItemsSource="{Binding Flights}" SelectedItem="{Binding SelectedFlight}" >
              <DataGrid.Columns>
-                 <DataGridTextColumn Header="Flight" Width="*" IsReadOnly="True" Binding="{Binding Number}"/>
-                 <DataGridTextColumn Header="Air Country" Width="*" IsReadOnly="True" Binding="{Binding Plane.Country.Name}"/>
-                 <DataGridTextColumn Header="Plane Model" Width="*" IsReadOnly="True" Binding="{Binding Plane.Model}"/>
-                    <DataGridTextColumn Header="Plane Type" Width="*" IsReadOnly="True" Binding="{Binding Plane.PlaneType.Type}"/>
-                    <DataGridTextColumn Header="Passengers" Width="*" IsReadOnly="True" Binding="{Binding Plane.PassengersCount}"/>
-                    <DataGridTextColumn Header="Arrival" Width="*" IsReadOnly="True" Binding="{Binding Arrival}"/>
-                 <DataGridTextColumn Header="Departure" Width="*" IsReadOnly="True" Binding="{Binding Departure}"/>
-                 <DataGridTextColumn Header="From" Width="*" IsReadOnly="True" Binding="{Binding ArrivalCity.Name}"/>
-                 <DataGridTextColumn Header="Destination" Width="*" IsReadOnly="True" Binding="{Binding DepartureCity.Name}"/>
+                <DataGridTextColumn Header="Flight" Width="*" IsReadOnly="True" Binding="{Binding Number}"/>
+                <DataGridTextColumn Header="Air Country" Width="*" IsReadOnly="True" Binding="{Binding Plane.Country.Name}"/>
+                <DataGridTextColumn Header="Plane Model" Width="*" IsReadOnly="True" Binding="{Binding Plane.Model}"/>
+                <DataGridTextColumn Header="Plane Type" Width="*" IsReadOnly="True" Binding="{Binding Plane.PlaneType.Type}"/>
+                <DataGridTextColumn Header="Passengers" Width="*" IsReadOnly="True" Binding="{Binding Plane.PassengersCount}"/>
+                <DataGridTextColumn Header="Arrival" Width="*" IsReadOnly="True" Binding="{Binding Arrival}"/>
+                <DataGridTextColumn Header="Departure" Width="*" IsReadOnly="True" Binding="{Binding Departure}"/>
+                <DataGridTextColumn Header="From" Width="*" IsReadOnly="True" Binding="{Binding ArrivalCity.Name}"/>
+                <DataGridTextColumn Header="Destination" Width="*" IsReadOnly="True" Binding="{Binding DepartureCity.Name}"/>
+             </DataGrid.Columns>
+            </DataGrid>
+            <GridSplitter  HorizontalAlignment="Stretch" Grid.Row="2" Height="5" Background="#FFC6D3E3"/>
+            <DataGrid  AutoGenerateColumns="False" Grid.Row="3" ItemsSource="{Binding Clients}" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Client Name" Width="*" IsReadOnly="True" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Client Surname" Width="*" IsReadOnly="True" Binding="{Binding Surname}"/>
+                    <DataGridTextColumn Header="Gender" Width="*" IsReadOnly="True" Binding="{Binding Gender.Name}"/>
+                    <DataGridTextColumn Header="Email" Width="*" IsReadOnly="True" Binding="{Binding Email}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
