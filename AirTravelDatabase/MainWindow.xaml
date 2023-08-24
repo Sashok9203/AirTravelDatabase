@@ -4,15 +4,56 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vms="clr-namespace:AirTravelDatabase.Models"
-        d:DataContext="{d:DesignInstance Type = vms:AirPlaneDBModel}"
+        d:DataContext="{d:DesignInstance Type = vms:AirTraveDBModel}"
         xmlns:local="clr-namespace:AirTravelDatabase"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Air Travel" Height="450" Width="800" Background= "AliceBlue">
 
     <Window.DataContext>
-        <vms:AirPlaneDBModel/>
+        <vms:AirTraveDBModel/>
     </Window.DataContext>
-    <Grid>
+    <Grid Margin="10">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Padding="5" CornerRadius="3,3,0,0" >
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF688CB5" Offset="0.076"/>
+                    <GradientStop Color="#FFD6E7FB" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <StackPanel Orientation="Horizontal">
+                <DatePicker  Width="150"  Margin="5,0,10,0" VerticalAlignment="Center"/>
+                <ComboBox  Margin="0,0,10,0" Width="150" Height="25"/>
+                <Button VerticalAlignment="Center" Height="25" Width="70" HorizontalAlignment="Left" Grid.Column="2" Content="Find Flight"/>
+            </StackPanel>
+        </Border>
+        <Border Grid.Row="1" Padding="5" CornerRadius="0,0,3,3">
+            <DataGrid AutoGenerateColumns="False" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Flight Number" Width="*" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Country" Width="*" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Plane Model" Width="*" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Plane Type" Width="*" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Passengers" Width="*" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Arrival" Width="*" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Departure" Width="*" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="From" Width="*" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Destination" Width="*" IsReadOnly="True"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFD6E7FB" Offset="0.076"/>
+                    <GradientStop  Color="#FF688CB5" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+
+
 
     </Grid>
 </Window>

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace AirTravelDatabase.Entities.Configs
 {
-    internal class AirPlaneTableConfig : IEntityTypeConfiguration<AirPlane>
+    internal class AirPlaneTableConfig : IEntityTypeConfiguration<Plane>
     {
-        public void Configure(EntityTypeBuilder<AirPlane> builder)
+        public void Configure(EntityTypeBuilder<Plane> builder)
         {
             builder.HasKey(x => x.Id);
             builder.ToTable(t => t.HasCheckConstraint("PassengersCount", "PassengersCount >= 0"));

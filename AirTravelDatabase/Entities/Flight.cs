@@ -10,26 +10,26 @@ namespace AirTravelDatabase.Entities
 {
     public class Flight
     {
-      // [Key]
+        // [Key]
         public int Id { get; set; }
 
-        public int Number { get; set; }
+        public string Number { get; set; }
 
-       // [MaxLength(56)]
+        // [MaxLength(56)]
         public string Model { get; set; }
 
-        public DateTime ArrivalDate { get; set; }
+        public DateTime Arrival { get; set; }
 
-        public DateTime DepartureDate { get; set; }
+        public DateTime Departure { get; set; }
 
-       // [ForeignKey("AirPlane")]
+        // [ForeignKey("AirPlane")]
         public int AirPlaneId { get; set; }
-        public AirPlane AirPlane { get; set; }
+        public Plane AirPlane { get; set; }
 
         public int? ArrivalCityId { get; set; }
         public City? ArrivalCity { get; set; }
 
-        public int? DepartureCityId { get; set; }
+        public int?  DepartureCityId { get; set; }
         public City? DepartureCity { get; set; }
 
         public ICollection<Client> Clients { get; set; } = new HashSet<Client>();

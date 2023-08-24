@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace AirTravelDatabase.Data
 {
-    public class AirPlaneDBContext : DbContext
+    public class AirTraveDBContext : DbContext
     {
-        public AirPlaneDBContext()
+        public AirTraveDBContext()
         {
             Database.EnsureDeleted();
             Database.EnsureCreated();
@@ -31,7 +31,7 @@ namespace AirTravelDatabase.Data
             modelBuilder.ApplyConfiguration<City>(new CityTableConfig());
             modelBuilder.ApplyConfiguration<Country>(new CountryTableConfig());
             modelBuilder.ApplyConfiguration<Gender>(new GenderTableConfig());
-            modelBuilder.ApplyConfiguration<AirPlane>(new AirPlaneTableConfig());
+            modelBuilder.ApplyConfiguration<Plane>(new AirPlaneTableConfig());
             modelBuilder.ApplyConfiguration<Client>(new ClientTableConfig());
             modelBuilder.ApplyConfiguration<Flight>(new FlightTableConfig());
         }
@@ -42,7 +42,7 @@ namespace AirTravelDatabase.Data
         public DbSet<Gender> Genders { get; set; }
         public DbSet<Client> Clients { get; set; }
         public DbSet<PlaneType> PlaneTypes { get; set; }
-        public DbSet<AirPlane> AirPlanes { get; set; }
+        public DbSet<Plane> AirPlanes { get; set; }
         public DbSet<Flight> Flights { get; set; }
     }
 }

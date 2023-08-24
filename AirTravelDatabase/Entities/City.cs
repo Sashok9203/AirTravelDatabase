@@ -10,14 +10,14 @@ namespace AirTravelDatabase.Entities
 {
     public class City
     {
-       // [Key]
-        public int Id { get; set; }
+        // [Key]
+        public  int Id { get; set; }
 
-       // [MaxLength(56)]
-        public string Name { get; set; }
+        // [MaxLength(56)]
+        public  string Name { get; set; }
 
-       // [ForeignKey("Country")]
-        public int CountryId { get; set; }
+        // [ForeignKey("Country")]
+        public  int CountryId { get; set; }
         public  Country Country {get;set;}
 
         public ICollection<Flight> ArivalFlights { get; set; } = new HashSet<Flight>();

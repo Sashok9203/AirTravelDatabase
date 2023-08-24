@@ -16,6 +16,6 @@ namespace AirTravelDatabase.Entities
         public string Name { get; set; }
 
         public ICollection<City> Cities { get; set; } = new HashSet<City>();
-        public ICollection<AirPlane> AirPlanes { get; set; } = new HashSet<AirPlane>();
+        public ICollection<Plane> AirPlanes { get; set; } = new HashSet<Plane>();
     }
 }

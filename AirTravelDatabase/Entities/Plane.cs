@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AirTravelDatabase.Entities
 {
-    public class AirPlane
+    public class Plane
     {
        // [Key]
         public int Id { get; set; }

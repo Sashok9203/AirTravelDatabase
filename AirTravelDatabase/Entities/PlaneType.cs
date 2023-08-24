@@ -15,6 +15,6 @@ namespace AirTravelDatabase.Entities
        // [MaxLength(56)]
         public string Type { get; set; }
 
-        public ICollection<AirPlane> AirPlanes { get; set; } = new HashSet<AirPlane>();
+        public ICollection<Plane> AirPlanes { get; set; } = new HashSet<Plane>();
     }
 }

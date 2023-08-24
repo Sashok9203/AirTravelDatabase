@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace AirTravelDatabase.Models
 {
-    internal class AirPlaneDBModel
+    internal class AirTraveDBModel
     {
-        private  AirPlaneDBContext dBContext;
-        public AirPlaneDBModel()
+        private  AirTraveDBContext dBContext;
+        public AirTraveDBModel()
         {
             dBContext = new();
         }
