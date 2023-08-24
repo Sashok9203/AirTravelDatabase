@@ -30,7 +30,7 @@
         <StackPanel Orientation="Horizontal">
              <StackPanel Orientation="Horizontal">
                   <TextBlock  Margin="5,0,10,0" Text="Arival Date"  VerticalAlignment="Center" FontWeight="DemiBold"/>
-                  <DatePicker  Width="150"  Margin="5,0,10,0" VerticalAlignment="Center" SelectedDate="{Binding SelectedDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                  <DatePicker  Width="150"  Margin="5,0,10,0" VerticalAlignment="Center" SelectedDate="{Binding SelectedDate,UpdateSourceTrigger=PropertyChanged}"/>
              </StackPanel>
              <StackPanel Orientation="Horizontal">
                   <TextBlock  Margin="5,0,10,0" Text="From"  VerticalAlignment="Center" FontWeight="DemiBold"/>
@@ -41,7 +41,7 @@
         <DataGrid AutoGenerateColumns="False" Grid.Row="1" ItemsSource="{Binding Flights}">
              <DataGrid.Columns>
                  <DataGridTextColumn Header="Flight" Width="*" IsReadOnly="True" Binding="{Binding Number}"/>
-                 <DataGridTextColumn Header="Country" Width="*" IsReadOnly="True" Binding="{Binding Plane.Country.Name}"/>
+                 <DataGridTextColumn Header="Air Country" Width="*" IsReadOnly="True" Binding="{Binding Plane.Country.Name}"/>
                  <DataGridTextColumn Header="Plane Model" Width="*" IsReadOnly="True" Binding="{Binding Plane.Model}"/>
                     <DataGridTextColumn Header="Plane Type" Width="*" IsReadOnly="True" Binding="{Binding Plane.PlaneType.Type}"/>
                     <DataGridTextColumn Header="Passengers" Width="*" IsReadOnly="True" Binding="{Binding Plane.PassengersCount}"/>

@@ -16,7 +16,17 @@ namespace AirTravelDatabase.Data
         public AirTraveDBContext()
         {
             Database.EnsureDeleted();
-            Database.EnsureCreated();
+            if (Database.EnsureCreated())
+            {
+                foreach (var item in Flights)
+                {
+                    int count = Data.Planes[item.PlaneId - 1].PassengersCount;
+                    for (int k = 0; k <= count; k++)
+                        item.Clients.Add(Data.Clients[new Random().Next(0, 50)]);
+                }
+                SaveChanges();
+            };
+            
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -34,6 +44,8 @@ namespace AirTravelDatabase.Data
             modelBuilder.ApplyConfiguration<Plane>(new AirPlaneTableConfig());
             modelBuilder.ApplyConfiguration<Client>(new ClientTableConfig());
             modelBuilder.ApplyConfiguration<Flight>(new FlightTableConfig());
+
+            Data.Initializer(modelBuilder);
         }
 
         public DbSet<Country> Countries { get; set; }

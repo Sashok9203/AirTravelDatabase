@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,8 @@ namespace AirTravelDatabase.Entities
        // [MaxLength(56)]
         public string Password { get; set; }
 
-        public ICollection<Client> Clients { get; set; } = new HashSet<Client>();
+       // [ForeignKey("Client")]
+        public int ClientId { get; set; }
+        public Client Client { get; set; }
     }
 }

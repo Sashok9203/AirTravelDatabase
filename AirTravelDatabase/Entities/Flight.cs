@@ -15,9 +15,6 @@ namespace AirTravelDatabase.Entities
 
         public string Number { get; set; }
 
-        // [MaxLength(56)]
-        public string Model { get; set; }
-
         public DateTime Arrival { get; set; }
 
         public DateTime Departure { get; set; }

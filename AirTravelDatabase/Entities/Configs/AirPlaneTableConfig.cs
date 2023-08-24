@@ -13,7 +13,7 @@ namespace AirTravelDatabase.Entities.Configs
         public void Configure(EntityTypeBuilder<Plane> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.ToTable(t => t.HasCheckConstraint("PassengersCount", "PassengersCount >= 0"));
+            builder.ToTable(t => t.HasCheckConstraint("PassengersCount", "PassengersCount >= 0").HasName("COUNT_CHECK"));
             builder.Property(x => x.Model).HasMaxLength(56);
             builder.Property(x => x.PassengersCount).HasDefaultValue(0);
             builder.HasOne(x => x.PlaneType).WithMany(x => x.AirPlanes).HasForeignKey(x=>x.PlaneTypeId);
